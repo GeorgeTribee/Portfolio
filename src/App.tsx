@@ -13,18 +13,18 @@ const IconGitHub = () => (
   </svg>
 );
 
+const IconProductHunt = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+    <path d="M13.604 8.4h-3.405V12h3.405c.996 0 1.8-.804 1.8-1.8s-.804-1.8-1.8-1.8zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.8V6h5.804c2.319 0 4.2 1.881 4.2 4.2 0 2.319-1.881 4.2-4.2 4.2z"/>
+  </svg>
+);
+
 // ── Header ────────────────────────────────────────────────────────────────────
 function Header() {
   return (
-    <header style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      padding: "20px 48px",
-      borderBottom: "1px solid #f0f0f0",
-    }}>
+    <header className="site-header">
       <span style={{ fontWeight: 600, fontSize: 15 }}>{PERSONA.name}</span>
-      <nav style={{ display: "flex", gap: 32 }}>
+      <nav className="site-nav">
         <a href="#work"    style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Work</a>
         <a href="#skills"  style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Skills</a>
         <a href="#contact" style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Contact</a>
@@ -50,17 +50,13 @@ export default function App() {
     <div style={{ minHeight: "100vh" }}>
       <Header />
 
-      <main style={{
-        maxWidth: 720,
-        margin: "0 auto",
-        padding: "64px 24px 120px",
-      }}>
+      <main className="site-main">
 
         {/* ── Hero ─────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 80, display: "flex", alignItems: "flex-start", gap: 48 }}>
+        <section className="hero-section">
 
           {/* Left: text */}
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <h1 style={{ fontSize: 28, fontWeight: 600, marginBottom: 20, lineHeight: 1.3 }}>
               Hi, I'm Giorgi 👋
             </h1>
@@ -105,6 +101,17 @@ export default function App() {
               >
                 <IconGitHub />
               </a>
+              <a
+                href={PERSONA.producthunt}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Product Hunt"
+                style={{ color: "#da552f", display: "flex", transition: "opacity 0.15s" }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = "0.7")}
+                onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+              >
+                <IconProductHunt />
+              </a>
             </div>
 
             {/* Email as plain text */}
@@ -115,16 +122,7 @@ export default function App() {
           <img
             src={profilePic}
             alt="Giorgi Daraselia"
-            style={{
-              width: 200,
-              height: "100%",
-              objectFit: "cover",
-              flexShrink: 0,
-              border: "1px solid #e8e8e8",
-              marginLeft: "auto",
-              marginRight: -80,
-              alignSelf: "stretch",
-            }}
+            className="hero-photo"
           />
         </section>
 
@@ -145,6 +143,7 @@ export default function App() {
                   padding: "13px 0",
                   borderBottom: "1px solid #f2f2f2",
                   gap: 16,
+                  flexWrap: "wrap",
                 }}
               >
                 {/* Left: company + note */}
@@ -210,7 +209,7 @@ export default function App() {
           <h2 style={{ fontSize: 22, fontWeight: 600, marginBottom: 28 }}>Skills</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {SKILLS.map((s) => (
-              <div key={s.category} style={{ display: "flex", gap: 24, alignItems: "baseline" }}>
+              <div key={s.category} style={{ display: "flex", gap: 24, alignItems: "baseline", flexWrap: "wrap" }}>
                 <span style={{ fontSize: 12, color: "#999", minWidth: 140, flexShrink: 0 }}>{s.category}</span>
                 <span style={{ fontSize: 14, color: "#333" }}>{s.items}</span>
               </div>
@@ -260,13 +259,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer style={{
-        borderTop: "1px solid #f0f0f0",
-        padding: "20px 48px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}>
+      <footer className="site-footer">
         <span style={{ fontSize: 12, color: "#bbb" }}>{PERSONA.name}</span>
         <span style={{ fontSize: 12, color: "#bbb" }}>© 2026</span>
       </footer>

@@ -1,8 +1,9 @@
 export const PERSONA = {
-  name:     "Giorgi Daraselia",
-  email:    "g.daraselia@getopenbot.com",
-  linkedin: "https://www.linkedin.com/in/drgeorgedaraselia/",
-  github:   "https://github.com/GeorgeTribee",
+  name:         "Giorgi Daraselia",
+  email:        "g.daraselia@getopenbot.com",
+  linkedin:     "https://www.linkedin.com/in/drgeorgedaraselia/",
+  github:       "https://github.com/GeorgeTribee",
+  producthunt:  "https://www.producthunt.com/@giorgi_daraselia",
 };
 
 export const WORK = [
