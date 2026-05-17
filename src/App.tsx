@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { PERSONA, WORK, SKILLS, TIMELINE } from "./data/portfolio";
 import profilePic from "./assets/profilepic.png";
 
@@ -21,15 +22,36 @@ const IconProductHunt = () => (
 
 // ── Header ────────────────────────────────────────────────────────────────────
 function Header() {
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
+
   return (
-    <header className="site-header">
-      <span style={{ fontWeight: 600, fontSize: 15 }}>{PERSONA.name}</span>
-      <nav className="site-nav">
-        <a href="#work"    style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Work</a>
-        <a href="#skills"  style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Skills</a>
-        <a href="#contact" style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Contact</a>
-      </nav>
-    </header>
+    <>
+      <header className="site-header">
+        <span style={{ fontWeight: 600, fontSize: 15 }}>{PERSONA.name}</span>
+        <nav className="site-nav">
+          <a href="#work"    style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Work</a>
+          <a href="#skills"  style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Skills</a>
+          <a href="#contact" style={{ fontSize: 14, color: "#111", fontWeight: 500 }}>Contact</a>
+        </nav>
+        <button
+          className={`hamburger${open ? " hamburger--open" : ""}`}
+          onClick={() => setOpen(o => !o)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+        >
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+        </button>
+      </header>
+
+      <div className={`mobile-menu${open ? " mobile-menu--open" : ""}`} aria-hidden={!open}>
+        <a href="#work"    onClick={close} className="mobile-menu__link">Work</a>
+        <a href="#skills"  onClick={close} className="mobile-menu__link">Skills</a>
+        <a href="#contact" onClick={close} className="mobile-menu__link">Contact</a>
+      </div>
+    </>
   );
 }
 
