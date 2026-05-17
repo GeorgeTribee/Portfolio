@@ -160,12 +160,11 @@ export default function App() {
                 key={i}
                 style={{
                   display: "flex",
-                  alignItems: "baseline",
+                  alignItems: "flex-start",
                   justifyContent: "space-between",
                   padding: "13px 0",
                   borderBottom: "1px solid #f2f2f2",
                   gap: 16,
-                  flexWrap: "wrap",
                 }}
               >
                 {/* Left: company + note */}
@@ -174,25 +173,21 @@ export default function App() {
                   <div style={{ fontSize: 12, color: "#aaa", marginTop: 1 }}>{w.note}</div>
                 </div>
 
-                {/* Right: role · period · url */}
-                <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexShrink: 0, whiteSpace: "nowrap" }}>
+                {/* Right: role / period / url stacked */}
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 3, flexShrink: 0, textAlign: "right" }}>
                   <span style={{ fontSize: 13, color: "#555" }}>{w.role}</span>
-                  <span style={{ fontSize: 12, color: "#bbb" }}>·</span>
                   <span style={{ fontSize: 12, color: "#999" }}>{w.period}</span>
                   {w.href && (
-                    <>
-                      <span style={{ fontSize: 12, color: "#bbb" }}>·</span>
-                      <a
-                        href={w.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontSize: 12, color: "#999", textDecoration: "underline", textDecorationStyle: "dotted", textUnderlineOffset: 2 }}
-                        onMouseEnter={e => (e.currentTarget.style.color = "#111")}
-                        onMouseLeave={e => (e.currentTarget.style.color = "#999")}
-                      >
-                        {w.url}
-                      </a>
-                    </>
+                    <a
+                      href={w.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontSize: 12, color: "#bbb", textDecoration: "underline", textDecorationStyle: "dotted", textUnderlineOffset: 2 }}
+                      onMouseEnter={e => (e.currentTarget.style.color = "#111")}
+                      onMouseLeave={e => (e.currentTarget.style.color = "#bbb")}
+                    >
+                      {w.url}
+                    </a>
                   )}
                 </div>
               </div>
