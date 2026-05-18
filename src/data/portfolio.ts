@@ -67,7 +67,7 @@ export const WORK = [
 
 export const SKILLS = [
   { category: "Frontend",           items: "React · TypeScript · Three.js · Tailwind · Framer Motion" },
-  { category: "AI & LLMs",          items: "OpenAI · Claude · Gemini · LangChain · LLM Training · RAG" },
+  { category: "AI & LLMs",          items: "LLM Training · RAG · Automations · Prompting · API Integrations" },
   { category: "Backend & Data",      items: "Node.js · REST APIs · Supabase · Firebase · PostgreSQL" },
   { category: "Startup & Leadership", items: "Fundraising · Team Building · Investor Relations · Product Strategy" },
 ];
